@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="info-box">
+    <strong>How to use this site:</strong><br>
+    All employees can browse the side-of-desk opportunities listed below.
+    If you are interested in getting involved or have questions, please reach out
+    directly to the initiative lead listed.
+</div>
+
+<h2>Current Side-of-Desk Opportunities</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Opportunity</th>
+            <th>Description</th>
+            <th>Initiative Lead</th>
+            <th>Available Roles</th>
+            <th>Avg. Weekly Commitment (hrs)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for opp in opportunities %}
+        <tr>
+            <td><strong>{{ opp.title }}</strong></td>
+            <td>{{ opp.description }}</td>
+            <td>{{ opp.lead }}</td>
+            <td class="roles">{{ opp.roles }}</td>
+            <td>{{ opp.hours }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5">No side-of-desk opportunities are currently listed.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="footer-message">
+    Interested in getting involved or learning more?
+    Please reach out directly to the initiative lead listed above.
+</div>
+
+{% endblock %}
